@@ -1,0 +1,61 @@
+<h4 class="text-center">Login Page By Angular</h4>
+<div class="topnav">
+  <a class="active" href="#Home">Home</a>
+  <br>
+  <a href="#News">News</a>
+  <br>
+  <a href="#contact">Contact</a>
+  <br>
+
+  <div class="topnav-right">
+    <a href="#Search">Search</a>
+    <br>
+    <a href="#about">About</a>
+  </div>
+</div>
+
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter email"
+      />
+      <small
+        class="form-text text-muted"
+        *ngIf="
+          loginForm.controls.email.touched &&
+          loginForm.controls.email.errors?.required
+        "
+      >
+        Please enter email address.!
+      </small>
+
+      <small
+        class="form-text text-muted"
+        *ngIf="
+          loginForm.controls.email.touched &&
+          loginForm.controls.email.errors?.email
+        "
+      >
+        Email address not well formed.!
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+      Submit
+    </button>
+  </form>
+</div>
